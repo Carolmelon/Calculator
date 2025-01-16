@@ -1,3 +1,4 @@
+import pytest
 from calculator.calculator import Calculator
 
 def test_add():
@@ -16,4 +17,7 @@ def test_divide():
     calc = Calculator()
     assert calc.divide(6, 2) == 3
 
-
+def test_divide_by_zero():
+    calc = Calculator()
+    with pytest.raises(ValueError, match="Cannot divide by zero"):
+        calc.divide(1, 0)
